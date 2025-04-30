@@ -248,7 +248,7 @@
 <section id="deployment" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Deployment Guide</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             
             <!-- Local Development Section -->
             <div class="feature-card" data-aos="fade-up">
@@ -331,28 +331,10 @@ python adaptive_scanner.py --model gpt-3.5 --provider OpenAI --endpoint https://
                 <p class="text-gray-600 mb-4">To keep the scanner running, consider using a service like <strong>systemd</strong> or running it in a detached screen session.</p>
             </div>
 
-            <!-- CI/CD Integration Section -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-xl font-bold mb-4">CI/CD Integration</h3>
-                <p class="text-gray-600 mb-4">Integrate with CI/CD pipelines for automated scanning. This helps automatically run the vulnerability scanner as part of your build pipeline.</p>
-                <div class="code-block">
-                    <pre><code class="language-yaml">
-name: Scan Models
-on: [push]
-jobs:
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: pip install llm-scanner
-      - run: python -m llm_scanner.scan
-                    </code></pre>
-                </div>
-                <p class="text-gray-600 mb-4">This configuration automatically installs the scanner, runs it, and checks your models for vulnerabilities whenever you push code to the repository.</p>
-            </div>
         </div>
     </div>
 </section>
+
 
         <!-- Team Section -->
         <section id="team" class="py-20 bg-white">
