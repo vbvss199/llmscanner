@@ -24,7 +24,7 @@
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between h-16">
                     <a href="#" class="flex items-center space-x-2" aria-label="LLM Scanner Home">
-                        <img src="shield-check.svg" alt="Logo" class="w-8 h-8">
+                        <img src="/Users/bhaskaravanacharla/Downloads/project/shield-check.svg" alt="Logo" class="w-8 h-8">
                         <span class="text-white font-bold text-xl">LLM Scanner</span>
                     </a>
                     <div class="hidden md:flex space-x-8">
@@ -171,53 +171,69 @@
                         </nav>
                     </div>
                     <div class="lg:col-span-3">
-                        <div id="getting-started" class="documentation-section">
+                        <section id="getting-started" class="documentation-section">
                             <h3 class="text-2xl font-bold mb-4">Getting Started</h3>
-                            <p class="mb-4">The LLM Vulnerability Scanner is a powerful tool designed to help you identify and mitigate security risks in your language models.</p>
-                            <div class="code-block">
-                                <pre><code class="language-python">
-from llm_scanner import VulnerabilityScanner
-
-scanner = VulnerabilityScanner()
-results = scanner.scan_model("your-model-name")
-                                </code></pre>
-                            </div>
-                        </div>
-                        <div id="installation" class="documentation-section">
+                            <p class="mb-4">The LLM Vulnerability Scanner is a powerful tool to identify and mitigate risks in large language models (LLMs). Follow the steps below to set up the scanner and start running vulnerability tests:</p>
+                            <ul class="list-disc pl-6">
+                                <li>Clone the repository from GitHub:</li>
+                                <pre><code class="language-bash">git clone https://github.com/your-repo/llm-scanner</code></pre>
+                                <li>Install the required dependencies:</li>
+                                <pre><code class="language-bash">pip install -r requirements.txt</code></pre>
+                                <li>Set up your environment variables. Create a `.env` file in the root directory and add your OpenAI API key:</li>
+                                <pre><code class="language-bash">OPENAI_API_KEY=your_api_key_here</code></pre>
+                            </ul>
+                            <p>Once you've set up the environment, you're ready to start scanning your models for vulnerabilities!</p>
+                        </section>
+                        
+                        <section id="installation" class="documentation-section">
                             <h3 class="text-2xl font-bold mb-4">Installation</h3>
-                            <p class="mb-4">Install the LLM Vulnerability Scanner using pip or from source.</p>
-                            <div class="code-block">
-                                <pre><code class="language-bash">
-pip install llm-scanner
-# Or from source
-git clone https://github.com/your-repo/llm-scanner
-cd llm-scanner
-python setup.py install
-                                </code></pre>
-                            </div>
-                        </div>
-                        <div id="configuration" class="documentation-section">
+                            <p class="mb-4">Follow these steps to install and configure the LLM Vulnerability Scanner:</p>
+                            <ul class="list-disc pl-6">
+                                <li>Clone the repository from GitHub:</li>
+                                <pre><code class="language-bash">git clone https://github.com/your-repo/llm-scanner</code></pre>
+                                <li>Navigate to the project folder and install the dependencies:</li>
+                                <pre><code class="language-bash">cd llm-scanner
+                        pip install -r requirements.txt</code></pre>
+                                <li>Set up your environment variables by creating a `.env` file with the following content:</li>
+                                <pre><code class="language-bash">OPENAI_API_KEY=your_api_key_here</code></pre>
+                            </ul>
+                            <p>Now you're ready to start scanning your models!</p>
+                        </section>
+                        
+                        <section id="configuration" class="documentation-section">
                             <h3 class="text-2xl font-bold mb-4">Configuration</h3>
-                            <p class="mb-4">Configure the scanner with your model settings and security parameters.</p>
-                            <div class="code-block">
-                                <pre><code class="language-python">
-scanner = VulnerabilityScanner(config={
-    "model_path": "/path/to/model",
-    "security_level": "high"
-})
-                                </code></pre>
-                            </div>
-                        </div>
-                        <div id="usage" class="documentation-section">
+                            <p class="mb-4">Before running the LLM Vulnerability Scanner, configure it by setting the necessary parameters:</p>
+                            <ul class="list-disc pl-6">
+                                <li>Specify the target model and provider in the command line or script configuration. Supported providers include OpenAI, Ollama, Gemini, and more.</li>
+                                <li>Set the endpoint for the API provider:</li>
+                                <pre><code class="language-bash">--endpoint https://api.openai.com/v1/chat/completions</code></pre>
+                                <li>Choose which vulnerability categories to scan. Available categories are:</li>
+                                <ul class="list-inside list-disc">
+                                    <li>Prompt Injection</li>
+                                    <li>Jailbreak</li>
+                                    <li>Privacy Leak</li>
+                                    <li>Denial of Service</li>
+                                    <li>Command Execution</li>
+                                </ul>
+                                <li>Set the Llama Guard endpoint if using the integrated safety tool (optional).</li>
+                            </ul>
+                            <p>Example configuration for running the scanner with OpenAI:</p>
+                            <pre><code class="language-bash">python adaptive_scanner.py --model gpt-3.5 --provider OpenAI --endpoint https://api.openai.com/v1/chat/completions --categories "Prompt Injection" "Jailbreak" --llama-guard</code></pre>
+                        </section>
+                        
+                        <section id="usage" class="documentation-section">
                             <h3 class="text-2xl font-bold mb-4">Usage</h3>
-                            <p class="mb-4">Run the scanner and review the results.</p>
-                            <div class="code-block">
-                                <pre><code class="language-python">
-results = scanner.scan_model("your-model-name")
-print(results.summary())
-                                </code></pre>
-                            </div>
-                        </div>
+                            <p class="mb-4">Once you have completed the configuration, you can run the vulnerability scanner to test the security of your target LLM. Here's how to use it:</p>
+                            <ul class="list-disc pl-6">
+                                <li>Run the scanner with the necessary arguments to specify your model, provider, and vulnerability categories:</li>
+                                <pre><code class="language-bash">python adaptive_scanner.py --model gpt-3.5 --provider OpenAI --endpoint https://api.openai.com/v1/chat/completions --categories "Prompt Injection" "Jailbreak"</code></pre>
+                                <li>The scanner will adapt prompts, check them for vulnerabilities, and evaluate the responses for risks.</li>
+                                <li>Reports will be generated, showing the details of vulnerabilities and risk scores.</li>
+                                <li>You can also specify whether to use Llama Guard for additional safety checks during the scan.</li>
+                            </ul>
+                            <p>For detailed results and logs, the scanner will output a report in JSON format that you can review.</p>
+                        </section>
+                        
                         <div id="api-reference" class="documentation-section">
                             <h3 class="text-2xl font-bold mb-4">API Reference</h3>
                             <p class="mb-4">Detailed API documentation is available in the official repository.</p>
