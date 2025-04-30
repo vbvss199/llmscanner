@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LLM Vulnerability Scanner helps secure AI models by identifying and mitigating potential risks in large language models.">
+    <meta name="keywords" content="LLM, AI security, vulnerability scanner, language models">
+    <meta property="og:title" content="LLM Vulnerability Scanner">
+    <meta property="og:description" content="Secure your AI models with our comprehensive vulnerability scanning tool.">
+    <meta property="og:image" content="/dashboard-preview.png">
+    <meta property="og:url" content="https://your-site.com">
+    <title>LLM Vulnerability Scanner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4T Fixture for FAQ icons">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body class="font-inter text-gray-800 bg-gray-50">
+    <div id="app">
+        <!-- Navigation -->
+        <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-colors duration-300">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16">
+                    <a href="#" class="flex items-center space-x-2" aria-label="LLM Scanner Home">
+                        <img src="/Users/bhaskaravanacharla/Downloads/project/shield-check.svg" alt="Logo" class="w-8 h-8">
+                        <span class="text-white font-bold text-xl">LLM Scanner</span>
+                    </a>
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#features" class="text-white hover:text-blue-200 transition-colors" aria-label="View Features Section">Features</a>
+                        <a href="#documentation" class="text-white hover:text-blue-200 transition-colors" aria-label="View Documentation Section">Documentation</a>
+                        <a href="#deployment" class="text-white hover:text-blue-200 transition-colors" aria-label="View Deployment Section">Deployment</a>
+                        <a href="#team" class="text-white hover:text-blue-200 transition-colors" aria-label="View Team Section">Team</a>
+                    </div>
+                    <button id="mobile-menu-button" class="md:hidden text-white" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-blue-900">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#features" class="block px-3 py-2 text-white hover:bg-blue-800 rounded-md">Features</ Rocks
+                    <a href="#documentation" class="block px-3 py-2 text-white hover:bg-blue-800 rounded-md">Documentation</a>
+                    <a href="#deployment" class="block px-3 py-2 text-white hover:bg-blue-800 rounded-md">Deployment</a>
+                    <a href="#team" class="block px-3 py-2 text-white hover:bg-blue-800 rounded-md">Team</a>
+                </div>
+            </div>
+        </nav>
+
+       <!-- Hero Section -->
+<section id="hero" class="relative min-h-screen bg-gradient-to-br from-blue-900 to-blue-800 text-white pt-16">
+    <div class="container mx-auto px-4 z-10">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Secure Your <span class="text-orange-500">AI Models</span> Against Vulnerabilities
+                </h1>
+                <p class="text-xl mb-8">
+                    Our LLM Vulnerability Scanner provides comprehensive security testing for large language models, helping you identify and mitigate potential risks before they become threats.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#documentation" class="btn-primary">Documentation</a>
+                    <a href="#demo" class="btn-secondary">Watch Demo</a>
+                </div>
+                <!-- Add video links here -->
+                <div class="mt-8">
+                    <h2 class="text-2xl font-bold text-white mb-4">Watch the Demo:</h2>
+                    <ul class="list-none space-y-2 text-white">
+                        <li><a href="https://youtu.be/sbqVPla-NF8" target="_blank" class="text-orange-400 hover:underline">Demo 1: LLM Vulnerability Scanner Overview</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=Q_izzyTCE0Q" target="_blank" class="text-orange-400 hover:underline">Demo 2: How to Use the Scanner</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=Bc_rYRQbYI0" target="_blank" class="text-orange-400 hover:underline">Demo 3: Advanced Security Features</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
+                <img src="/dashboard-preview.png" alt="LLM Scanner Dashboard" class="rounded-lg shadow-xl">
+            </div> -->
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
+</section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Key Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card" data-aos="fade-up">
+                        <div class="feature-icon bg-blue-50 text-blue-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Advanced Security Testing</h3>
+                        <p class="text-gray-600">Comprehensive vulnerability assessment using state-of-the-art testing methodologies.</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon bg-teal-50 text-teal-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Real-time Analysis</h3>
+                        <p class="text-gray-600">Instant feedback and analysis of potential vulnerabilities in your LLM models.</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon bg-orange-50 text-orange-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Detailed Reports</h3>
+                        <p class="text-gray-600">Comprehensive reporting with actionable insights and mitigation strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Reports Section -->
+<section id="sample-reports" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Sample Reports Generated by LLM Vulnerability Scanner</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Sample Report 1 -->
+            <div class="report-card" data-aos="fade-up">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Sample Report 1: Denial of Service</h3>
+                    <p class="text-gray-600 mb-4">This sample report provides an overview of the security risks identified in the model, including prompt injection vulnerabilities and data leakage risks.</p>
+                    <a href="guard_report_Denial of Service_0_f4d3f0a3.txt" target="_blank" class="text-blue-600 hover:underline">View Full Report</a>
+                </div>
+            </div>
+            <!-- Sample Report 2 -->
+            <div class="report-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Sample Report 2: Command Execution</h3>
+                    <p class="text-gray-600 mb-4">This report highlights critical vulnerabilities, providing detailed insights into risk mitigation strategies, and the model's response to security tests.</p>
+                    <a href="guard_report_Command Execution_0_01b2c9be.txt" target="_blank" class="text-blue-600 hover:underline">View Full Report</a>
+                </div>
+            </div>
+            <!-- Sample Report 3 -->
+            <div class="report-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Sample Report 3: Prompt</h3>
+                    <p class="text-gray-600 mb-4">A comprehensive evaluation of the API vulnerabilities, detailing potential injection points, and how the system mitigates them.</p>
+                    <a href="guard_report_Prompt Injection_0_e50bf87c.txt" target="_blank" class="text-blue-600 hover:underline">View Full Report</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Documentation Section -->
+        <section id="documentation" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Documentation</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <div class="lg:col-span-1">
+                        <nav class="sticky top-24">
+                            <ul class="space-y-2">
+                                <li><a href="#getting-started" class="doc-nav-item">Getting Started</a></li>
+                                <li><a href="#installation" class="doc-nav-item">Installation</a></li>
+                                <li><a href="#configuration" class="doc-nav-item">Configuration</a></li>
+                                <li><a href="#usage" class="doc-nav-item">Usage</a></li>
+                                <li><a href="#api-reference" class="doc-nav-item">API Reference</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div id="getting-started" class="documentation-section">
+                            <h3 class="text-2xl font-bold mb-4">Getting Started</h3>
+                            <p class="mb-4">The LLM Vulnerability Scanner is a powerful tool designed to help you identify and mitigate security risks in your language models.</p>
+                            <div class="code-block">
+                                <pre><code class="language-python">
+from llm_scanner import VulnerabilityScanner
+
+scanner = VulnerabilityScanner()
+results = scanner.scan_model("your-model-name")
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div id="installation" class="documentation-section">
+                            <h3 class="text-2xl font-bold mb-4">Installation</h3>
+                            <p class="mb-4">Install the LLM Vulnerability Scanner using pip or from source.</p>
+                            <div class="code-block">
+                                <pre><code class="language-bash">
+pip install llm-scanner
+# Or from source
+git clone https://github.com/your-repo/llm-scanner
+cd llm-scanner
+python setup.py install
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div id="configuration" class="documentation-section">
+                            <h3 class="text-2xl font-bold mb-4">Configuration</h3>
+                            <p class="mb-4">Configure the scanner with your model settings and security parameters.</p>
+                            <div class="code-block">
+                                <pre><code class="language-python">
+scanner = VulnerabilityScanner(config={
+    "model_path": "/path/to/model",
+    "security_level": "high"
+})
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div id="usage" class="documentation-section">
+                            <h3 class="text-2xl font-bold mb-4">Usage</h3>
+                            <p class="mb-4">Run the scanner and review the results.</p>
+                            <div class="code-block">
+                                <pre><code class="language-python">
+results = scanner.scan_model("your-model-name")
+print(results.summary())
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div id="api-reference" class="documentation-section">
+                            <h3 class="text-2xl font-bold mb-4">API Reference</h3>
+                            <p class="mb-4">Detailed API documentation is available in the official repository.</p>
+                            <a href="https://github.com/your-repo/llm-scanner" class="text-blue-600 hover:underline">View API Reference</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deployment Section -->
+        <section id="deployment" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Deployment Guide</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card" data-aos="fade-up">
+                        <h3 class="text-xl font-bold mb-4">Local Development</h3>
+                        <p class="text-gray-600 mb-4">Set up your development environment and run the scanner locally.</p>
+                        <div class="code-block">
+                            <pre><code class="language-bash">
+git clone https://github.com/your-repo/llm-scanner
+cd llm-scanner
+python setup.py install
+                            </code></pre>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-xl font-bold mb-4">Cloud Deployment</h3>
+                        <p class="text-gray-600 mb-4">Deploy the scanner on cloud platforms like AWS or GCP.</p>
+                        <div class="code-block">
+                            <pre><code class="language-bash">
+docker build -t llm-scanner .
+docker run -p 8080:8080 llm-scanner
+                            </code></pre>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold mb-4">CI/CD Integration</h3>
+                        <p class="text-gray-600 mb-4">Integrate with CI/CD pipelines for automated scanning.</p>
+                        <div class="code-block">
+                            <pre><code class="language-yaml">
+name: Scan Models
+on: [push]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install llm-scanner
+      - run: python -m llm_scanner.scan
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Our Team</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card" data-aos="fade-up">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Veera Swamy Gattupalli</h3>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Likith Pawan Kagita</h3>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Gnana Vardhan Siddu Paruvada</h3>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Avinash Reddy Polireddy</h3>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Sai Kumar Reddy Tummeti</h3>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Sahithi Kantu</h3>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Bhaskara Vijaya Sai Swamy Vanacharla</h3>
+                        </div>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Kiran Varma Ceemala Shankar</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                            <span>How does the vulnerability scanner work?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div id="faq-answer-1" class="faq-answer">
+                            <p>The scanner uses a combination of prompt injection techniques and security testing methodologies to identify potential vulnerabilities in language models.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                            <span>Is the scanner compatible with all LLMs?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div id="faq-answer-2" class="faq-answer">
+                            <p>The scanner supports most major LLMs, including open-source and proprietary models. Check the documentation for compatibility details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-blue-900 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">LLM Scanner</h3>
+                        <p class="text-gray-300">Securing the future of AI, one model at a time.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#features" class="text-gray-300 hover:text-white">Features</a></li>
+                            <li><a href="#documentation" class="text-gray-300 hover:text-white">Documentation</a></li>
+                            <li><a href="#deployment" class="text-gray-300 hover:text-white">Deployment</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white">Blog</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Tutorials</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">API Reference</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Contact</h4>
+                        <ul class="space-y-2">
+                            <li><a href="mailto:support@llmscanner.com" class="text-gray-300 hover:text-white">support@llmscanner.com</a></li>
+                            <li><a href="https://github.com/your-repo" class="text-gray-300 hover:text-white">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-blue-800 text-center">
+                    <p class="text-gray-300">&copy; 2025 LLM Vulnerability Scanner. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
