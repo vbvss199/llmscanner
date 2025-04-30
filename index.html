@@ -245,36 +245,98 @@
         </section>
 
         <!-- Deployment Section -->
-        <section id="deployment" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Deployment Guide</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="feature-card" data-aos="fade-up">
-                        <h3 class="text-xl font-bold mb-4">Local Development</h3>
-                        <p class="text-gray-600 mb-4">Set up your development environment and run the scanner locally.</p>
-                        <div class="code-block">
-                            <pre><code class="language-bash">
+<section id="deployment" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Deployment Guide</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Local Development Section -->
+            <div class="feature-card" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-4">Local Deployment</h3>
+                <p class="text-gray-600 mb-4">Set up your development environment and run the scanner locally on your machine.</p>
+                <p class="text-gray-600 mb-4">Follow these steps to deploy the scanner locally:</p>
+                <ul class="list-disc pl-6 text-gray-600">
+                    <li>Clone the repository from GitHub:</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+git clone https://github.com/your-repo/llm-scanner
+                    </code></pre>
+                </div>
+                <ul class="list-disc pl-6 text-gray-600">
+                    <li>Navigate to the project folder:</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+cd llm-scanner
+                    </code></pre>
+                </div>
+                <ul class="list-disc pl-6 text-gray-600">
+                    <li>Set up a Python virtual environment and activate it:</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+python3 -m venv llm-scanner-env
+source llm-scanner-env/bin/activate
+                    </code></pre>
+                </div>
+                <ul class="list-disc pl-6 text-gray-600">
+                    <li>Install the required dependencies:</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+pip install -r requirements.txt
+                    </code></pre>
+                </div>
+                <ul class="list-disc pl-6 text-gray-600">
+                    <li>Set up environment variables by creating a `.env` file in the root directory:</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+OPENAI_API_KEY=your-openai-api-key
+                    </code></pre>
+                </div>
+                <p class="text-gray-600 mb-4">Once set up, run the scanner with the following command:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+python adaptive_scanner.py --model gpt-3.5 --provider OpenAI --endpoint https://api.openai.com/v1/chat/completions --categories "Prompt Injection" "Jailbreak"
+                    </code></pre>
+                </div>
+            </div>
+
+            <!-- Cloud Deployment Section (AWS) -->
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-bold mb-4">Cloud Deployment (AWS)</h3>
+                <p class="text-gray-600 mb-4">Deploy the scanner on cloud platforms like AWS using EC2. This setup is for those who want to run the scanner in the cloud.</p>
+                <p class="text-gray-600 mb-4">Follow the steps to deploy on AWS EC2:</p>
+                <ul class="list-disc pl-6 text-gray-600">
+                    <li>Launch an EC2 instance (Ubuntu recommended).</li>
+                    <li>SSH into your instance: <code>ssh -i /path/to/your-key.pem ubuntu@your-ec2-public-ip</code></li>
+                    <li>Install the required dependencies: <code>sudo apt-get install python3 python3-pip git</code></li>
+                    <li>Clone the repository and install the required packages:</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code class="language-bash">
 git clone https://github.com/your-repo/llm-scanner
 cd llm-scanner
-python setup.py install
-                            </code></pre>
-                        </div>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-xl font-bold mb-4">Cloud Deployment</h3>
-                        <p class="text-gray-600 mb-4">Deploy the scanner on cloud platforms like AWS or GCP.</p>
-                        <div class="code-block">
-                            <pre><code class="language-bash">
-docker build -t llm-scanner .
-docker run -p 8080:8080 llm-scanner
-                            </code></pre>
-                        </div>
-                    </div>
-                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="text-xl font-bold mb-4">CI/CD Integration</h3>
-                        <p class="text-gray-600 mb-4">Integrate with CI/CD pipelines for automated scanning.</p>
-                        <div class="code-block">
-                            <pre><code class="language-yaml">
+pip install -r requirements.txt
+                    </code></pre>
+                </div>
+                <p class="text-gray-600 mb-4">Once you’ve set up the environment, run the scanner:</p>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+python adaptive_scanner.py --model gpt-3.5 --provider OpenAI --endpoint https://api.openai.com/v1/chat/completions --categories "Prompt Injection" "Jailbreak"
+                    </code></pre>
+                </div>
+                <p class="text-gray-600 mb-4">To keep the scanner running, consider using a service like <strong>systemd</strong> or running it in a detached screen session.</p>
+            </div>
+
+            <!-- CI/CD Integration Section -->
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-4">CI/CD Integration</h3>
+                <p class="text-gray-600 mb-4">Integrate with CI/CD pipelines for automated scanning. This helps automatically run the vulnerability scanner as part of your build pipeline.</p>
+                <div class="code-block">
+                    <pre><code class="language-yaml">
 name: Scan Models
 on: [push]
 jobs:
@@ -284,12 +346,13 @@ jobs:
       - uses: actions/checkout@v3
       - run: pip install llm-scanner
       - run: python -m llm_scanner.scan
-                            </code></pre>
-                        </div>
-                    </div>
+                    </code></pre>
                 </div>
+                <p class="text-gray-600 mb-4">This configuration automatically installs the scanner, runs it, and checks your models for vulnerabilities whenever you push code to the repository.</p>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- Team Section -->
         <section id="team" class="py-20 bg-white">
