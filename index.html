@@ -234,11 +234,140 @@
                             <p>For detailed results and logs, the scanner will output a report in JSON format that you can review.</p>
                         </section>
                         
-                        <div id="api-reference" class="documentation-section">
-                            <h3 class="text-2xl font-bold mb-4">API Reference</h3>
-                            <p class="mb-4">Detailed API documentation is available in the official repository.</p>
-                            <a href="https://github.com/your-repo/llm-scanner" class="text-blue-600 hover:underline">View API Reference</a>
-                        </div>
+                        <!-- API Reference Section -->
+<section id="api-reference" class="documentation-section py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">API Reference</h2>
+        
+        <!-- API Overview -->
+        <div class="mb-12">
+            <h3 class="text-xl font-bold mb-4">Overview</h3>
+            <p class="text-gray-600">The LLM Vulnerability Scanner interacts with various APIs for different tasks such as generating prompts, evaluating responses, and leveraging Llama Guard for safety evaluations. Below are the key API endpoints used by the scanner.</p>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="space-y-12">
+
+            <!-- Endpoint 1: OpenAI Evaluation API -->
+            <div>
+                <h4 class="text-xl font-bold mb-2">OpenAI Evaluation API</h4>
+                <p class="text-gray-600 mb-4">This API is used to send a prompt to OpenAI’s GPT models to evaluate responses for potential security risks.</p>
+                <h5 class="text-lg font-semibold mb-2">Endpoint</h5>
+                <pre><code class="language-bash">POST https://api.openai.com/v1/chat/completions</code></pre>
+                <h5 class="text-lg font-semibold mb-2">Request Body</h5>
+                <pre><code class="language-json">
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Evaluate the following LLM response for potential security risk. Prompt: <prompt_here> Response: <response_here>"
+    }
+  ]
+}
+                </code></pre>
+                <h5 class="text-lg font-semibold mb-2">Response</h5>
+                <pre><code class="language-json">
+{
+  "choices": [
+    {
+      "message": {
+        "content": "<evaluation_here>"
+      }
+    }
+  ]
+}
+                </code></pre>
+                <p class="text-gray-600">This API evaluates the provided prompt and response, returning a security risk evaluation.</p>
+            </div>
+
+            <!-- Endpoint 2: Llama Guard Prompt Safety Check -->
+            <div>
+                <h4 class="text-xl font-bold mb-2">Llama Guard Prompt Safety Check</h4>
+                <p class="text-gray-600 mb-4">This endpoint checks whether a generated prompt is safe to send to the target LLM. It leverages Llama Guard for safety evaluations.</p>
+                <h5 class="text-lg font-semibold mb-2">Endpoint</h5>
+                <pre><code class="language-bash">POST http://localhost:11434/api/chat</code></pre>
+                <h5 class="text-lg font-semibold mb-2">Request Body</h5>
+                <pre><code class="language-json">
+{
+  "prompt": "<generated_prompt_here>"
+}
+                </code></pre>
+                <h5 class="text-lg font-semibold mb-2">Response</h5>
+                <pre><code class="language-json">
+{
+  "is_unsafe": false,
+  "details": "Prompt is safe"
+}
+                </code></pre>
+                <p class="text-gray-600">This API evaluates whether the generated prompt is considered safe or if it contains potentially harmful content (e.g., prompt injection).</p>
+            </div>
+
+            <!-- Endpoint 3: Target LLM API (OpenAI, Gemini, etc.) -->
+            <div>
+                <h4 class="text-xl font-bold mb-2">Target LLM API</h4>
+                <p class="text-gray-600 mb-4">This endpoint sends the generated prompt to the target LLM (e.g., OpenAI, Gemini) and receives the response.</p>
+                <h5 class="text-lg font-semibold mb-2">Endpoint</h5>
+                <pre><code class="language-bash">POST <target_api_endpoint></code></pre>
+                <h5 class="text-lg font-semibold mb-2">Request Body</h5>
+                <pre><code class="language-json">
+{
+  "model": "gpt-3.5",
+  "messages": [
+    {
+      "role": "user",
+      "content": "<generated_prompt_here>"
+    }
+  ]
+}
+                </code></pre>
+                <h5 class="text-lg font-semibold mb-2">Response</h5>
+                <pre><code class="language-json">
+{
+  "choices": [
+    {
+      "message": {
+        "content": "<response_here>"
+      }
+    }
+  ]
+}
+                </code></pre>
+                <p class="text-gray-600">This endpoint interacts with the target LLM (e.g., OpenAI, Gemini) and receives the model’s response based on the provided prompt.</p>
+            </div>
+
+            <!-- Endpoint 4: Llama Guard Report Saving -->
+            <div>
+                <h4 class="text-xl font-bold mb-2">Llama Guard Report Saving</h4>
+                <p class="text-gray-600 mb-4">This endpoint is used to save the safety evaluation reports generated by Llama Guard for auditing and record-keeping.</p>
+                <h5 class="text-lg font-semibold mb-2">Endpoint</h5>
+                <pre><code class="language-bash">POST http://localhost:11434/api/report</code></pre>
+                <h5 class="text-lg font-semibold mb-2">Request Body</h5>
+                <pre><code class="language-json">
+{
+  "report": {
+    "attack_type": "<attack_type>",
+    "prompt": "<prompt_here>",
+    "response": "<response_here>",
+    "is_unsafe": true,
+    "details": "Detected potential prompt injection attack"
+  }
+}
+                </code></pre>
+                <h5 class="text-lg font-semibold mb-2">Response</h5>
+                <pre><code class="language-json">
+{
+  "status": "success",
+  "message": "Report saved successfully"
+}
+                </code></pre>
+                <p class="text-gray-600">This API endpoint saves the detailed safety report generated by Llama Guard for each prompt and response evaluation.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
                     </div>
                 </div>
             </div>
