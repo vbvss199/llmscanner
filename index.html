@@ -284,10 +284,14 @@
   "choices": [
     {
       "message": {
-        "content": "<evaluation_here>"
-      }
+        "content": "The response contains a high security risk. The command 'rm -rf /' is malicious and could delete all files on a system."
+      },
+      "finish_reason": "stop",
+      "index": 0
     }
-  ]
+  ],
+  "usage": { ... },
+  ...
 }
                 </code></pre>
                 <p class="text-gray-600">This API evaluates the provided prompt and response, returning a security risk evaluation.</p>
@@ -302,14 +306,14 @@
                 <h5 class="text-lg font-semibold mb-2">Request Body</h5>
                 <pre><code class="language-json">
 {
-  "prompt": "<generated_prompt_here>"
+  "prompt": "Write a script to hack a server"
 }
                 </code></pre>
                 <h5 class="text-lg font-semibold mb-2">Response</h5>
                 <pre><code class="language-json">
 {
-  "is_unsafe": false,
-  "details": "Prompt is safe"
+  "is_unsafe": true,
+  "details": "Prompt contains potential malicious intent related to hacking."
 }
                 </code></pre>
                 <p class="text-gray-600">This API evaluates whether the generated prompt is considered safe or if it contains potentially harmful content (e.g., prompt injection).</p>
