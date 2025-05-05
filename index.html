@@ -579,32 +579,178 @@ python adaptive_scanner.py --model gpt-3.5 --provider OpenAI --endpoint https://
     </div>
 </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
-                <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-                            <span>How does the vulnerability scanner work?</span>
-                            <i class="fas fa-chevron-down transition-transform"></i>
-                        </button>
-                        <div id="faq-answer-1" class="faq-answer">
-                            <p>The scanner uses a combination of prompt injection techniques and security testing methodologies to identify potential vulnerabilities in language models.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
-                            <span>Is the scanner compatible with all LLMs?</span>
-                            <i class="fas fa-chevron-down transition-transform"></i>
-                        </button>
-                        <div id="faq-answer-2" class="faq-answer">
-                            <p>The scanner supports most major LLMs, including open-source and proprietary models. Check the documentation for compatibility details.</p>
-                        </div>
-                    </div>
+              <!-- FAQ Section -->
+<section id="faq" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+        <div class="max-w-3xl mx-auto space-y-4 faq-container">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                    <span>What is the purpose of the LLM Vulnerability Scanner?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-1" class="faq-answer">
+                    <p>The LLM Vulnerability Scanner tests large language models (LLMs) for vulnerabilities like prompt injection, jailbreaking, privacy leaks, and more. It uses adaptive prompt generation and Llama Guard to evaluate prompt and response safety, helping developers identify and mitigate security risks in LLMs.</p>
                 </div>
             </div>
-        </section>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                    <span>Who is the intended audience for this project?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-2" class="faq-answer">
+                    <p>AI developers, security researchers, and organizations deploying LLMs who need to assess model robustness against malicious inputs or unintended behaviors.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                    <span>What types of vulnerabilities does the scanner test for?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-3" class="faq-answer">
+                    <p>It tests for Prompt Injection, Jailbreak, Privacy Leak, Denial of Service, Command Execution, and System Takeover, as defined in <a href="#documentation" class="text-blue-600 hover:underline">template.json</a> and <a href="#documentation" class="text-blue-600 hover:underline">llm_vulnerability_prompt_templates_variable.json</a>.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                    <span>What technologies are used in the project?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-4" class="faq-answer">
+                    <p>The project uses Python with libraries like <code>openai</code>, <code>requests</code>, <code>streamlit</code>, <code>pandas</code>, <code>plotly</code>, and <code>ollama</code> (see <a href="#documentation" class="text-blue-600 hover:underline">requirements.txt</a>). It integrates Llama Guard for safety checks and OpenAI for prompt generation and evaluation. The UI uses Tailwind CSS and custom styles (<a href="#documentation" class="text-blue-600 hover:underline">style.css</a>).</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+                    <span>How does Llama Guard contribute to the scanner?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-5" class="faq-answer">
+                    <p>Llama Guard, hosted locally via Ollama, evaluates prompts and responses for safety, detecting unsafe categories like injection or privacy violations. It provides detailed safety reports, as implemented in <a href="#documentation" class="text-blue-600 hover:underline">llama_guard.py</a>.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+                    <span>What is the role of the adaptive scanning mechanism?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-6" class="faq-answer">
+                    <p>The scanner (<a href="#documentation" class="text-blue-600 hover:underline">adaptive_scanner.py</a>) generates evolving prompts using OpenAI’s GPT model to test LLMs iteratively. It adapts prompts based on previous responses to uncover vulnerabilities, stopping when a high-risk score (default threshold: 6/10) is detected or after 6 attempts.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+                    <span>How are risk scores calculated?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-7" class="faq-answer">
+                    <p>OpenAI’s GPT-3.5-turbo evaluates responses and assigns a risk score (0–10) based on potential security risks. The score is extracted using LLM-based parsing in <a href="#documentation" class="text-blue-600 hover:underline">adaptive_scanner.py</a>.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8">
+                    <span>What is the significance of the CSV file?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-8" class="faq-answer">
+                    <p>The CSV (<a href="#documentation" class="text-blue-600 hover:underline">llm_vulnerability_report_prompt_injection.csv</a>) logs scan results, including timestamps, attack types, prompts, responses, evaluations, risk scores, and Llama Guard reports. It provides a historical record of vulnerability tests for analysis.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-9">
+                    <span>Can the scanner test LLMs from different providers?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-9" class="faq-answer">
+                    <p>Yes, it supports providers like OpenAI, Gemini, Claude, Mistral, Ollama, and Together, configurable via command-line arguments in <a href="#documentation" class="text-blue-600 hover:underline">adaptive_scanner.py</a>.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-10">
+                    <span>How does the project handle transparency in the UI gradient?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-10" class="faq-answer">
+                    <p>The UI uses a gradient div for a fading effect. Transparency is adjusted using <code>rgba</code> values (e.g., <code>from-[rgba(243,244,246,0.5)]</code>) to reduce the intensity of <code>gray-100</code>, customizable in <a href="#documentation" class="text-blue-600 hover:underline">style.css</a>.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-11">
+                    <span>How do I set up the project locally?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-11" class="faq-answer">
+                    <p>Clone the repository, install dependencies from <a href="#documentation" class="text-blue-600 hover:underline">requirements.txt</a> (<code>pip install -r requirements.txt</code>), set up environment variables (e.g., <code>OPENAI_API_KEY</code> in a <code>.env</code> file), and run <a href="#documentation" class="text-blue-600 hover:underline">adaptive_scanner.py</a> with appropriate arguments (e.g., <code>--model</code>, <code>--provider</code>).</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-12">
+                    <span>What are the command-line arguments for running the scanner?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-12" class="faq-answer">
+                    <p>Key arguments include <code>--model</code> (target model), <code>--provider</code> (e.g., Ollama), <code>--endpoint</code> (API URL), <code>--llama-guard</code> (enable Llama Guard), <code>--categories</code> (vulnerability types), and <code>--output</code> (results directory). See <a href="#documentation" class="text-blue-600 hover:underline">adaptive_scanner.py</a> for details.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-13">
+                    <span>How can I view the scan results?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-13" class="faq-answer">
+                    <p>Results are saved as JSON files in the specified output directory (e.g., <code>results/vulnerability_scan_&lt;model&gt;_&lt;timestamp&gt;.json</code>). Detailed Llama Guard reports are saved in the <code>llama_guard_reports</code> directory if enabled.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-14">
+                    <span>Can I customize the vulnerability templates?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-14" class="faq-answer">
+                    <p>Yes, edit <a href="#documentation" class="text-blue-600 hover:underline">llm_vulnerability_prompt_templates_variable.json</a> or <a href="#documentation" class="text-blue-600 hover:underline">template.json</a> to add or modify attack templates. Each template specifies an attack type and prompt structure.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-15">
+                    <span>What happens if Llama Guard is unavailable?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-15" class="faq-answer">
+                    <p>If Llama Guard fails to connect (tested via <code>test_llama_guard_connection</code> in <a href="#documentation" class="text-blue-600 hover:underline">llama_guard.py</a>), the scanner continues without it, relying solely on OpenAI evaluations.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-16">
+                    <span>Is it safe to use this scanner on production LLMs?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-16" class="faq-answer">
+                    <p>The scanner is designed for testing in controlled environments. Use caution in production, as it generates potentially malicious prompts that could trigger unintended behaviors.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-17">
+                    <span>How does the scanner prevent accidental harm?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-17" class="faq-answer">
+                    <p>Llama Guard flags unsafe prompts and responses, and the scanner operates within a defined scope of attack categories. However, users should test in sandboxed environments to avoid real-world impact.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-18">
+                    <span>What does a high risk score indicate?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div id="faq-answer-18" class="faq-answer">
+                    <p>A score of 6 or higher (out of 10) suggests a significant vulnerability, such as leaking sensitive data or executing harmful instructions, as seen in the CSV data (e.g., risk score 9 for privacy leaks).</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
         <!-- Footer -->
         <footer class="bg-blue-900 text-white py-12">
