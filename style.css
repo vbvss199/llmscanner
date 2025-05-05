@@ -136,16 +136,27 @@ pre code {
 }
 
 /* FAQ */
+.faq-container {
+  max-height: 600px; /* Limit height to prevent overwhelming the page */
+  overflow-y: auto; /* Enable scrolling if needed */
+  padding-right: 0.5rem; /* Space for scrollbar */
+}
+
 .faq-item {
   border: 1px solid #E5E7EB;
   border-radius: 0.5rem;
   overflow: hidden;
   margin-bottom: 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .faq-question {
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem; /* Slightly increased padding for readability */
   text-align: left;
   background-color: white;
   display: flex;
@@ -153,20 +164,36 @@ pre code {
   justify-content: space-between;
   font-weight: 500;
   color: #1F2937;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
 }
 
 .faq-question:hover {
   background-color: #F9FAFB;
+  color: #2563EB; /* Match doc-nav-item hover color */
+}
+
+.faq-question:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3B82F6, 0 0 0 4px rgba(59, 130, 246, 0.3); /* Match btn-primary focus */
+}
+
+.faq-question[aria-expanded="true"] .fa-chevron-down {
+  transform: rotate(180deg); /* Rotate chevron when expanded */
 }
 
 .faq-answer {
-  padding: 0 1.5rem 1rem;
+  padding: 0 1.5rem 1.5rem; /* Increased bottom padding */
   color: #4B5563;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.3s ease, padding 0.3s ease; /* Smooth transition for expansion */
+}
+
+/* Ensure expanded answers have sufficient height */
+.faq-answer[style*="max-height:"] {
+  max-height: 300px; /* Arbitrary large value to accommodate content */
+  padding: 0 1.5rem 1.5rem;
 }
 
 /* Animations */
@@ -192,4 +219,26 @@ pre code {
   .feature-card {
     margin-bottom: 1rem;
   }
+
+  .faq-container {
+    max-height: 400px; /* Smaller height on mobile */
+  }
+
+  .faq-question {
+    padding: 1rem 1.25rem; /* Slightly reduced padding for mobile */
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+  }
+}
+
+/* Gradient overlay for footer compatibility */
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to top, rgba(243, 244, 246, 0.3), transparent); /* Matches prior transparency discussion */
 }
