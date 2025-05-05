@@ -134,7 +134,6 @@ pre code {
   padding: 1rem;
   font-size: 0.875rem;
 }
-
 /* FAQ */
 .faq-container {
   max-height: 600px; /* Limit height to prevent overwhelming the page */
@@ -219,26 +218,6 @@ pre code {
   .feature-card {
     margin-bottom: 1rem;
   }
-
-  .faq-container {
-    max-height: 400px; /* Smaller height on mobile */
-  }
-
-  .faq-question {
-    padding: 1rem 1.25rem; /* Slightly reduced padding for mobile */
-  }
-
-  .faq-answer {
-    padding: 0 1.25rem 1.25rem;
-  }
 }
 
-/* Gradient overlay for footer compatibility */
-.gradient-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 8rem;
-  background: linear-gradient(to top, rgba(243, 244, 246, 0.3), transparent); /* Matches prior transparency discussion */
-}
+
